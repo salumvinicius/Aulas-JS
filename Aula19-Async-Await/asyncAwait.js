@@ -1,18 +1,19 @@
 const getHarryPotterHouses = async () => {
   try {
-    const resposta = await fetch('https://potterapi-fedeperin.vercel.appp/pt/houses');
+    const resposta = await fetch('https://potterapi-fedeperin.vercel.app/pt/houses/');
     const dados = await resposta.json();
     if (dados.error){
-      throw new Error(data.error);
+      throw new Error(dados.error);
     }
     if (!resposta.ok){
-      throw new Error('Ops! Algo deu errado!');
+      const status = resposta.status;
+      throw new Error('Falha na requisição');
     }
-    console.log("Dados: ", dados);
-  } catch (err){
-    console.log(err);
+    console.log(dados);
   }
- 
+    catch (erro) {
+    console.log(erro);
+  }
 }
 
 getHarryPotterHouses();

@@ -1,60 +1,61 @@
+// Método GET
+
 const getPosts = async () => {
   try {
     const resposta = await fetch('https://jsonplaceholder.typicode.com/posts');
     const dados = await resposta.json();
-    if (!resposta.ok){
-      throw new Error('Ops! Algo deu errado no GET!');
-    }
-    console.log("Dados do GET: ", dados);
-  } catch (err){
-    console.log(err);
-  }
- 
-}
-
-// Método GET
-// getPosts();
-
-// Método POST
-
-const publishNewPost = async() => {
-  try {
-    const resposta = await fetch('https://jsonplaceholder.typicode.com/posts', {
-      method: 'POST',
-      body: JSON.stringify({
-        title: 'foo',
-        body: 'bar',
-        userId: 1,
-      }),
-      headers: {
-        'Content-type': 'application/json',
-      },
-    });
-    const dados = await resposta.json();
-    if (dados.error){
+    if (dados.erros){
       throw new Error(data.error);
     }
     if (!resposta.ok){
-      throw new Error('Ops! Algo deu errado no POST!');
+      throw new Error("Ops! Algo deu errado!");
     }
-    console.log("Resposta do POST: ", dados);
-  } catch (err){
-    console.log(err);
+    console.log("Dados do GET: ", dados);
+  } catch (error){
+    console.log(error);
   }
 }
 
-// publishNewPost();
+getPosts();
+
+// Método POST
+
+try{
+  const publishNewPost = await fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST',
+    body: JSON.stringify({
+      title: 'foo',
+      body: 'bar',
+      userId: 1
+    }),
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+  const dados = await resposta.json();
+  if (dados.erros){
+    throw new Error(data.error);
+  }
+  if (!resposta.ok){
+    throw new Error("Ops! Algo deu errado!");
+  }
+  console.log("Resposta do POST: ", dados);
+} catch (error){
+  console.log(error);
+}
+
+publishNewPost();
 
 // Método PUT
 
-const editPost = async() => {
-  try {
+const editPost = async () => {
+  try{
     const resposta = await fetch('https://jsonplaceholder.typicode.com/posts/1', {
       method: 'PUT',
       body: JSON.stringify({
         title: 'foo',
         body: 'bar',
-        userId: 1,
+        userId: 1
       }),
       headers: {
         'Content-type': 'application/json',
@@ -65,20 +66,20 @@ const editPost = async() => {
       throw new Error(data.error);
     }
     if (!resposta.ok){
-      throw new Error('Ops! Algo deu errado no PUT!');
+      throw new Error("Ops! Algo deu errado!");
     }
     console.log("Resposta do PUT: ", dados);
-  } catch (err){
-    console.log(err);
+  } catch (error){
+    console.log(error);
   }
 }
 
-//editPost();
+editPost();
 
 // Método PATCH
 
-const editPostTitle = async() => {
-  try {
+const editPostTitle = async () => {
+  try{
     const resposta = await fetch('https://jsonplaceholder.typicode.com/posts/1', {
       method: 'PATCH',
       body: JSON.stringify({
@@ -93,20 +94,20 @@ const editPostTitle = async() => {
       throw new Error(data.error);
     }
     if (!resposta.ok){
-      throw new Error('Ops! Algo deu errado no PATCH!');
+      throw new Error("Ops! Algo deu errado!");
     }
     console.log("Resposta do PATCH: ", dados);
-  } catch (err){
-    console.log(err);
+  } catch (error){
+    console.log(error);
   }
 }
 
-// editPostTitle();
+editPostTitle();
 
 // Método DELETE
 
-const deletePost = async() => {
-  try {
+  const deletePost = async () => {
+  try{
     const resposta = await fetch('https://jsonplaceholder.typicode.com/posts/1', {
       method: 'DELETE',
     });
@@ -115,11 +116,12 @@ const deletePost = async() => {
       throw new Error(data.error);
     }
     if (!resposta.ok){
-      throw new Error('Ops! Algo deu errado no DELETE!');
+      throw new Error("Ops! Algo deu errado!");
     }
-  } catch (err){
-    console.log(err);
+    console.log("Resposta do DELETE: ", dados);
+  } catch (error){
+    console.log(error);
   }
-}
-
+  }
+  
 deletePost();
